@@ -1,13 +1,24 @@
 package com.wamoev.bootingweb.models;
 
+import javax.persistence.*;
+import java.util.UUID;
 
+@Entity
+@Table(name = "EMPLOYEE")
 public class Employee {
+    @Id
+    @Column(name = "EMPLOYEE_ID")
     private String employeeId;
+    @Column(name = "FIRST_NAME")
     private String firstName;
+    @Column(name = "LAST_NAME")
     private String lastName;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "POSITION")
     private Position position;
 
     public Employee() {
+        employeeId = UUID.randomUUID().toString();
     }
 
     public Employee(String employeeId, String firstName, String lastName, Position position) {
